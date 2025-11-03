@@ -1,4 +1,3 @@
-/* app/globals.css */
 @import "tailwindcss";
 
 @theme {
@@ -6,22 +5,26 @@
   --font-estedad: "EStedad", sans-serif;
   --font-yekanBakh: "YekanBakh", sans-serif;
 
-  /* --- Base Colors --- */
-  --color-background: 255 255 255;
-  --color-foreground: 9 9 11;
-
   /* --- Brand Colors --- */
-  --color-primary: 94 181 248;
-  --color-secondary: 54 54 54;
-  --color-drk: 31 39 50;
-  --color-secondary-txt: 133 133 133;
-  --color-line: 251 251 251;
-  --color-bg-elements: 202 232 255;
-
-  /* --- UI Colors --- */
-  --color-border: 229 231 235;
-  --color-ring: var(--color-primary);
-  --color-accent: 245 245 245;
+--color-primary: oklch(0.7467 0.1285 244.03);                        /* #5EB5F8 */
+--color-secondary: oklch(0.27 0.0235 256.43);                       /* #1F2732 */
+--color-gray: oklch(0.6167 0 0);                                   /* #858585 */
+--color-line: oklch(0.9881 0 0);                                  /* #FBFBFB */
+--color-bg-light: oklch(0.9684 0.0134 240.95);                   /* #EDF6FD */
+--color-muted: oklch(0.9672 0 0);                               /* #F4F4F4 */
+--color-brown: oklch(0.5901 0.0147 71.22);                     /* #837C74 */
+--color-accent: oklch(0.9165 0.044652 241.0551);              /* #CAE8FF */
+--color-dark: oklch(0.2573 0.0118 55.8);                     /* #28221E */
+--color-gray-light: oklch(0.66 0 0);                        /* #929292 */
+--color-gray-lighter: oklch(0.9401 0 0);                   /* #EBEBEB */
+--color-pink-gray: oklch(0.7039 0.0147 0.45);             /* #A89C9F */
+--color-neutral: oklch(0.9731 0 0);                      /* #F6F6F6 */
+--color-blue-dark: oklch(0.4553 0.0742 243.8);          /* #2F5B7D */
+--color-gray-border: oklch(0.928 0 0);                 /* #E7E7E7 */
+--color-gray-dark: oklch(0.3252 0.0057 17.45);        /* #373333 */
+--color-gray-darker: oklch(0.3562 0 0);              /* #3C3C3C */
+--color-gray-300: oklch(0.3329 0 0);                /* #363636 */
+--color-gray-soft: oklch(0.8853 0 0);              /* #D9D9D9 */
 
   /* --- Component Colors --- */
   --color-card: var(--color-background);
@@ -33,16 +36,31 @@
   --color-destructive: 239 68 68;
   --color-destructive-foreground: 249 249 249;
 
-  /* --- Border Radius --- */
-  --radius: 0.5rem;
-
   /* --- Font Sizes for Headings (optional, not strictly needed) --- */
-  --text-4xl: 2.25rem;   /* h1 */
-  --text-3xl: 1.875rem;  /* h2 */
-  --text-2xl: 1.5rem;    /* h3 */
-  --text-xl: 1.25rem;    /* h4 */
-  --text-lg: 1.125rem;   /* h5 */
-  --text-base: 1rem;     /* h6 */
+  --text-4xl: 2.25rem; /* h1 */
+  --text-3xl: 1.875rem; /* h2 */
+  --text-2xl: 1.5rem; /* h3 */
+  --text-xl: 1.25rem; /* h4 */
+  --text-lg: 1.125rem; /* h5 */
+  --text-base: 1rem; /* h6 */
+  --background-image-vertical: repeating-linear-gradient(
+    to right,
+    #fbfbfb 0px,
+    #fbfbfb 1px,
+    transparent 1px,
+    transparent 4.76%
+  );
+}
+@media (max-width: 640px) {
+  :root {
+    --background-image-vertical: repeating-linear-gradient(
+      to right,
+      #fbfbfb 0px,
+      #fbfbfb 1px,
+      transparent 1px,
+      transparent 14.28%
+    );
+  }
 }
 
 @theme dark {
@@ -65,7 +83,7 @@
 /* Optional: define @font-face if using local font files */
 @font-face {
   font-family: "EStedad";
-  src: url("/fonts/EStedad-Regular.woff2") format("woff2");
+  src: url("../assets/fonts/Estedad-FD-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -73,7 +91,7 @@
 
 @font-face {
   font-family: "YekanBakh";
-  src: url("/fonts/YekanBakh-Regular.woff2") format("woff2");
+  src: url("../assets/fonts/YekanBakh-Medium.woff") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -81,33 +99,77 @@
 
 @font-face {
   font-family: "YekanBakh";
-  src: url("/fonts/YekanBakh-Bold.woff2") format("woff2");
+  src: url("../assets/fonts/YekanBakh-Bold.woff") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* Base styles */
-* {
-  border-color: hsl(var(--color-border));
-  padding: 0;
-  margin: 0;
+@font-face {
+  font-family: "YekanBakh";
+  src: url("../assets/fonts/YekanBakh-Heavy.woff") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
-body {
-  background-color: hsl(var(--color-background));
-  color: hsl(var(--color-foreground));
-  font-family: var(--font-estedad);
+@layer base {
+  * {
+    @apply p-0 m-0 box-border;
+  }
+  html {
+    @apply scroll-smooth min-h-screen;
+  }
+  body {
+    @apply bg-vertical text-base font-normal font-estedad;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-yekanBakh font-bold;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h5 {
+    @apply text-lg;
+  }
+  h6 {
+    @apply text-base;
+  }
 }
 
-/* Heading styles using font-yekanBakh */
-h1, h2, h3, h4, h5, h6 {
-  @apply font-yekanBakh font-bold;
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .dir-ltr {
+    direction: ltr;
+  }
+  .bg-vertical-lines {
+    background-image: var(--bg-vertical-lines);
+    background-size: 100% 100%;
+  }
 }
 
-h1 { @apply text-4xl; }
-h2 { @apply text-3xl; }
-h3 { @apply text-2xl; }
-h4 { @apply text-xl; }
-h5 { @apply text-lg; }
-h6 { @apply text-base; }
+@layer components {
+  .container {
+    @apply p-4 md:p-3 flex justify-center items-center mx-auto;
+  }
+}
