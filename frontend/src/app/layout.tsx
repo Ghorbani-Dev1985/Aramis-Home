@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { vazirmatn, yekan } from "@/lib/fonts";
+import { estedad, YekanBakh } from "@/lib/fonts";
 import "@/styles/globals.css";
 
+
 export const metadata: Metadata = {
-  title: "آرامیس | Aramis",
-  description: "پلتفرم آرامیس",
+  title: {
+    template: "%s | کالای خواب آرامیس",
+    default: "وارد کننده بهترین کالاهای خواب وارداتی از کشور های معتبر در سراسر جهان"
+  },
+  description: "وارد کننده بهترین کالاهای خواب وارداتی از کشور های معتبر در سراسر جهان",
 };
+
 
 export default function RootLayout({
   children,
@@ -16,9 +21,9 @@ export default function RootLayout({
     <html
       lang="fa"
       dir="rtl"
-      className={`${vazirmatn.variable} ${yekan.variable}`}
+      className={`${estedad.variable} ${YekanBakh.variable}`}
     >
-      <body className="min-h-screen bg-background font-vazirmatn antialiased">
+      <body className="min-h-screen">
         {children}
       </body>
     </html>

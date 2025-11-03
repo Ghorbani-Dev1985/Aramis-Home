@@ -1,58 +1,113 @@
-@import "tailwindcss/preflight";
-@tailwind utilities;
+/* app/globals.css */
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 204 93% 67%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 204 93% 67%;
-    --radius: 0.5rem;
-  }
+@theme {
+  /* --- Fonts --- */
+  --font-estedad: "EStedad", sans-serif;
+  --font-yekanBakh: "YekanBakh", sans-serif;
 
-  .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 0 0% 95%;
-    --card: 24 9.8% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 204 93% 67%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 204 93% 67%;
-  }
+  /* --- Base Colors --- */
+  --color-background: 255 255 255;
+  --color-foreground: 9 9 11;
+
+  /* --- Brand Colors --- */
+  --color-primary: 94 181 248;
+  --color-secondary: 54 54 54;
+  --color-drk: 31 39 50;
+  --color-secondary-txt: 133 133 133;
+  --color-line: 251 251 251;
+  --color-bg-elements: 202 232 255;
+
+  /* --- UI Colors --- */
+  --color-border: 229 231 235;
+  --color-ring: var(--color-primary);
+  --color-accent: 245 245 245;
+
+  /* --- Component Colors --- */
+  --color-card: var(--color-background);
+  --color-card-foreground: var(--color-foreground);
+  --color-popover: var(--color-background);
+  --color-popover-foreground: var(--color-foreground);
+  --color-muted: 244 244 245;
+  --color-muted-foreground: 113 113 122;
+  --color-destructive: 239 68 68;
+  --color-destructive-foreground: 249 249 249;
+
+  /* --- Border Radius --- */
+  --radius: 0.5rem;
+
+  /* --- Font Sizes for Headings (optional, not strictly needed) --- */
+  --text-4xl: 2.25rem;   /* h1 */
+  --text-3xl: 1.875rem;  /* h2 */
+  --text-2xl: 1.5rem;    /* h3 */
+  --text-xl: 1.25rem;    /* h4 */
+  --text-lg: 1.125rem;   /* h5 */
+  --text-base: 1rem;     /* h6 */
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+@theme dark {
+  /* --- Dark Mode Colors --- */
+  --color-background: 23 23 23;
+  --color-foreground: 250 250 250;
+  --color-secondary: 82 82 82;
+  --color-secondary-txt: 156 156 156;
+  --color-line: 38 38 38;
+  --color-bg-elements: 47 47 47;
+  --color-border: 38 38 38;
+  --color-accent: 38 38 38;
+  --color-muted: 38 38 38;
+  --color-muted-foreground: 156 156 156;
+  --color-card: 38 38 38;
+  --color-popover: 38 38 38;
+  --color-destructive-foreground: 250 250 250;
 }
+
+/* Optional: define @font-face if using local font files */
+@font-face {
+  font-family: "EStedad";
+  src: url("/fonts/EStedad-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YekanBakh";
+  src: url("/fonts/YekanBakh-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YekanBakh";
+  src: url("/fonts/YekanBakh-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base styles */
+* {
+  border-color: hsl(var(--color-border));
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+  font-family: var(--font-estedad);
+}
+
+/* Heading styles using font-yekanBakh */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-yekanBakh font-bold;
+}
+
+h1 { @apply text-4xl; }
+h2 { @apply text-3xl; }
+h3 { @apply text-2xl; }
+h4 { @apply text-xl; }
+h5 { @apply text-lg; }
+h6 { @apply text-base; }
